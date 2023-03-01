@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./routes/home";
-import Detail from "./routes/detail";
+import Home from "./routes/Home";
+import Detail from "./routes/Detail";
 import BaseLayout from "./layouts/BaseLayout";
+import './style.css';
 
 const router = createBrowserRouter([
     {
