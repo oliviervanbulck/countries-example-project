@@ -38,13 +38,13 @@ export default function Detail() {
                     Loading...
                     <FontAwesomeIcon icon={faCircleNotch} spin size="4x" />
                 </div>
-            </div> : (country ? <div className="flex gap-32 items-center">
+            </div> : (country ? <div className="flex gap-10 md:gap-32 items-center flex-col md:flex-row">
                 <div className="flex-1">
                     <img src={ country.flag } alt={`Flag of ${country.name}`} />
                 </div>
-                <div className="flex-1 lg:flex-2">
+                <div className="flex-1">
                     <h1 className="mb-8">{country.name}</h1>
-                    <div className="flex mb-20">
+                    <div className="flex mb-20 flex-col md:flex-row">
                         <div className="flex-1">
                             <div className="mb-2">
                                 <span className="font-bold">Native Name:</span> {country.nativeName}
@@ -67,10 +67,10 @@ export default function Detail() {
                                 <span className="font-bold">Top Level Domain:</span> {country.topLevelDomain}
                             </div>
                             <div className="mb-2">
-                                <span className="font-bold">currencies:</span> {country.currencies.map(c => c.name).join(', ')}
+                                <span className="font-bold">currencies:</span> {(country.currencies || []).map(c => c.name).join(', ')}
                             </div>
                             <div className="mb-2">
-                                <span className="font-bold">Languages:</span> {country.languages.map(l => l.name).join(', ')}
+                                <span className="font-bold">Languages:</span> {(country.languages || []).map(l => l.name).join(', ')}
                             </div>
                         </div>
                     </div>

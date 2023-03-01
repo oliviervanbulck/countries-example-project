@@ -4,7 +4,7 @@ export default function CountryPreview({ country }) {
     const navigate = useNavigate();
 
     return (
-        <div className="w-80 bg-white dark:bg-man-dark-blue rounded-md overflow-hidden cursor-pointer drop-shadow-lg" onClick={() => navigate(`/${country.alpha3Code}`)}>
+        <div className="w-full sm:w-80 bg-white dark:bg-man-dark-blue rounded-md overflow-hidden cursor-pointer drop-shadow-lg" onClick={() => navigate(`/${country.alpha3Code}`)}>
             <img src={country.flag} alt={'Flag'} className="w-full" />
             <div className="p-5 ">
                 <h2>

@@ -24,14 +24,14 @@ export default function Home() {
 
     return (
         <>
-            <div className="flex justify-between mb-10">
+            <div className="flex justify-between mb-10 flex-col sm:flex-row gap-10">
                 <div className="rounded-md bg-white dark:bg-man-dark-blue py-3 px-5 drop-shadow-lg text-man-dark-gray dark:text-white">
                     <FontAwesomeIcon icon={faSearch} className="mr-5" />
-                    <input type="text" placeholder="Search..." className="bg-inherit focus:outline-none" value={filter} onChange={e => setFilter(e.target.value)} />
+                    <input type="text" placeholder="Search for a country..." className="bg-inherit focus:outline-none" value={filter} onChange={e => setFilter(e.target.value)} />
                 </div>
                 <Menu as="div" className="relative inline-block text-left">
                     <div>
-                        <Menu.Button className="w-56 inline-flex w-full justify-between rounded-md bg-white dark:bg-man-dark-blue py-3 px-5 drop-shadow-lg text-sm font-medium focus:outline-none">
+                        <Menu.Button className="w-56 inline-flex justify-between rounded-md bg-white dark:bg-man-dark-blue py-3 px-5 drop-shadow-lg text-sm font-medium focus:outline-none">
                             Filter by Region
                             <FontAwesomeIcon icon={faChevronDown} className="-mr-1 ml-2" aria-hidden="true" />
                         </Menu.Button>
@@ -46,7 +46,7 @@ export default function Home() {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                     >
-                        <Menu.Items className="absolute right-0 z-10 mt-1 w-56 origin-top-right rounded-md bg-white dark:bg-man-dark-blue shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <Menu.Items className="absolute left-0 sm:right-0 z-10 mt-1 w-56 origin-top-right sm:origin-top-right rounded-md bg-white dark:bg-man-dark-blue shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                             <div className="py-1">
                                 {[...new Set(countryList.map(country => country.region))].map(region => (
                                     <Menu.Item>
