@@ -1,8 +1,10 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faArrowLeft, faCircleNotch} from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import {useEffect, useState} from "react";
 import {getCountry, getCountryList} from "../helpers/countries";
 import {Link, useParams} from "react-router-dom";
+import CountryProperty from "../components/CountryProperty";
+import LoadingComponent from "../components/LoadingComponent";
 
 export default function Detail() {
     const [loading, setLoading] = useState(true);
@@ -33,12 +35,7 @@ export default function Detail() {
                     Back
                 </Link>
             </div>
-            { loading ? <div className="flex justify-center">
-                <div className="flex flex-col font-bold gap-5">
-                    Loading...
-                    <FontAwesomeIcon icon={faCircleNotch} spin size="4x" />
-                </div>
-            </div> : (country ? <div className="flex gap-10 md:gap-32 items-center flex-col md:flex-row">
+            { loading ? <LoadingComponent /> : (country ? <div className="flex gap-10 md:gap-32 items-center flex-col md:flex-row">
                 <div className="flex-1">
                     <img src={ country.flag } alt={`Flag of ${country.name}`} />
                 </div>
@@ -46,32 +43,16 @@ export default function Detail() {
                     <h1 className="mb-8">{country.name}</h1>
                     <div className="flex mb-20 flex-col md:flex-row">
                         <div className="flex-1">
-                            <div className="mb-2">
-                                <span className="font-bold">Native Name:</span> {country.nativeName}
-                            </div>
-                            <div className="mb-2">
-                                <span className="font-bold">Population:</span> {country.population.toLocaleString('en')}
-                            </div>
-                            <div className="mb-2">
-                                <span className="font-bold">Region:</span> {country.region}
-                            </div>
-                            <div className="mb-2">
-                                <span className="font-bold">Sub Region:</span> {country.subregion}
-                            </div>
-                            <div className="mb-2">
-                                <span className="font-bold">Capital:</span> {country.capital}
-                            </div>
+                            <CountryProperty title={'Native Name'} value={country.nativeName} />
+                            <CountryProperty title={'Population'} value={country.population.toLocaleString('en')} />
+                            <CountryProperty title={'Region'} value={country.region} />
+                            <CountryProperty title={'Sub Region'} value={country.subregion} />
+                            <CountryProperty title={'Capital'} value={country.capital} />
                         </div>
                         <div className="flex-1">
-                            <div className="mb-2">
-                                <span className="font-bold">Top Level Domain:</span> {country.topLevelDomain}
-                            </div>
-                            <div className="mb-2">
-                                <span className="font-bold">currencies:</span> {(country.currencies || []).map(c => c.name).join(', ')}
-                            </div>
-                            <div className="mb-2">
-                                <span className="font-bold">Languages:</span> {(country.languages || []).map(l => l.name).join(', ')}
-                            </div>
+                            <CountryProperty title={'Top Level Domain'} value={country.topLevelDomain} />
+                            <CountryProperty title={'Currencies'} value={(country.currencies || []).map(c => c.name).join(', ')} />
+                            <CountryProperty title={'Languages'} value={(country.languages || []).map(l => l.name).join(', ')} />
                         </div>
                     </div>
                     <div>

@@ -1,10 +1,11 @@
 import {Fragment, useEffect, useState} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faChevronDown, faCircleNotch, faSearch} from "@fortawesome/free-solid-svg-icons";
+import {faChevronDown, faSearch} from "@fortawesome/free-solid-svg-icons";
 import { getCountries } from "../helpers/countries";
 import CountryPreview from "../components/CountryPreview";
 import { Menu, Transition } from '@headlessui/react';
 import classNames from "classnames";
+import LoadingComponent from "../components/LoadingComponent";
 
 export default function Home() {
     const [loading, setLoading] = useState(true);
@@ -68,12 +69,7 @@ export default function Home() {
                     </Transition>
                 </Menu>
             </div>
-            { loading ? <div className="flex justify-center">
-                <div className="flex flex-col font-bold gap-5">
-                    Loading...
-                    <FontAwesomeIcon icon={faCircleNotch} spin size="4x" />
-                </div>
-            </div> : <div className="flex flex-wrap gap-16 justify-left">
+            { loading ? <LoadingComponent /> : <div className="flex flex-wrap gap-16 justify-left">
                 {countryList.filter((country) => country.name.toLowerCase().includes(filter.toLowerCase()) && (regionFilter === '' || regionFilter === country.region)).map((country) => <CountryPreview country={country} />)}
             </div> }
         </>
