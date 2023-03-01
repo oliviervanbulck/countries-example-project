@@ -13,8 +13,8 @@ export default function BaseLayout(props) {
 
     return (
         <div className="text-black dark:text-white">
-            <div className="w-full bg-white dark:bg-[#2b3743] h-20 drop-shadow-lg">
-                <div className="container mx-auto flex justify-between items-center h-full font-bold">
+            <div className="w-full bg-white dark:bg-man-dark-blue h-20 drop-shadow-lg">
+                <div className="container px-10 mx-auto flex justify-between items-center h-full font-bold">
                     <h1>Where in the world?</h1>
                     <span onClick={toggleDarkMode} className="cursor-pointer">
                             <FontAwesomeIcon icon={darkMode ? faMoon : faMoonRegular} className="mr-2" />
@@ -22,7 +22,7 @@ export default function BaseLayout(props) {
                         </span>
                 </div>
             </div>
-            <div className="container mx-auto my-10">
+            <div className="container px-10 mx-auto my-10">
                 { props.children }
             </div>
         </div>
